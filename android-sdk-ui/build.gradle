@@ -4,20 +4,24 @@ buildscript {
   }
 
   dependencies {
-    classpath "com.android.tools.build:gradle:0.9.+"
+    classpath "com.android.tools.build:gradle:0.12.+"
   }
 }
 
-apply plugin: "android-library"
+apply plugin: "com.android.library"
 
-android {
-  repositories {
+repositories {
     mavenLocal()
     mavenCentral()
-  }
+}
+dependencies {
+    compile files('libs/appboy.jar')
+    compile 'com.android.support:support-v4:20.0.0'
+}
+android {
 
   compileSdkVersion 19
-  buildToolsVersion '19.0.2'
+  buildToolsVersion '20.0.0'
 
   sourceSets {
     main.setRoot(".")
@@ -29,8 +33,5 @@ android {
     }
   }
 
-  dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar']) 
-    compile 'com.android.support:support-v4:19.0.+'   
-  }
+
 }
